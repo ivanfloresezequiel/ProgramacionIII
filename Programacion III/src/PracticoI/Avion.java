@@ -14,6 +14,30 @@ public class Avion {
 		this.matricula = matricula;
 		this.listaAsientos = listaAsientos;
 	}
+	public int getIdAvion() {
+		return idAvion;
+	}
+	public void setIdAvion(int idAvion) {
+		this.idAvion = idAvion;
+	}
+	public String getModelo() {
+		return modelo;
+	}
+	public void setModelo(String modelo) {
+		this.modelo = modelo;
+	}
+	public String getMatricula() {
+		return matricula;
+	}
+	public void setMatricula(String matricula) {
+		this.matricula = matricula;
+	}
+	public LinkedList<Asiento> getListaAsientos() {
+		return listaAsientos;
+	}
+	public void setListaAsientos(LinkedList<Asiento> listaAsientos) {
+		this.listaAsientos = listaAsientos;
+	}
 	
 
 

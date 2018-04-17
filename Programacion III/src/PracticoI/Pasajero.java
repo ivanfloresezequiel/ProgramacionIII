@@ -14,6 +14,41 @@ public class Pasajero {
 		this.nombres = nombres;
 		this.telefono = telefono;
 	}
+	@Override
+	public String toString() {
+		return "Pasajero [idPasajero=" + idPasajero + ", CUIL=" + CUIL + ", apellido=" + apellido + ", nombres="
+				+ nombres + ", telefono=" + telefono + "]";
+	}
+	public int getIdPasajero() {
+		return idPasajero;
+	}
+	public void setIdPasajero(int idPasajero) {
+		this.idPasajero = idPasajero;
+	}
+	public String getCUIL() {
+		return CUIL;
+	}
+	public void setCUIL(String cUIL) {
+		CUIL = cUIL;
+	}
+	public String getApellido() {
+		return apellido;
+	}
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+	public String getNombres() {
+		return nombres;
+	}
+	public void setNombres(String nombres) {
+		this.nombres = nombres;
+	}
+	public String getTelefono() {
+		return telefono;
+	}
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
 	
 	
 }
