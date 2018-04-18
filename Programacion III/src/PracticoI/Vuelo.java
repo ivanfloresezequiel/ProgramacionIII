@@ -2,6 +2,10 @@ package PracticoI;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.Period;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashSet;
 import java.util.LinkedList;
 
 public class Vuelo {
@@ -15,8 +19,8 @@ public class Vuelo {
 	private LinkedList<Piloto> listaPilotos;
 	private Avion avion;
 	private LinkedList<Asignacion> pasajeros;
-	private LinkedList<Integer> idPilotos;
 	
+	static final HashSet <Piloto> listamayor= new HashSet<Piloto>();
 	
 	
 	public Vuelo(String condigoVuelo, Aeropuerto salida, LocalDateTime fechaHoraSalida, Aeropuerto arribo,
@@ -31,6 +35,7 @@ public class Vuelo {
 		this.fechaHoraArribo = fechaHoraArribo;
 		this.aerolinea = aerolinea;
 		this.listaPilotos = listaPilotos;
+	
 		this.avion = avion;
 		this.pasajeros = pasajeros;
 		
@@ -40,11 +45,16 @@ public class Vuelo {
 			//cantidad = ((fechaHoraArribo.getHour() - fechaHoraSalida.getHour())* 60) - (fechaHoraArribo.getMinute() - fechaHoraSalida.getMinute());
 		//System.out.println("hora de llegada: "+fechaHoraArribo.getHour() + cantidad+ "minutos de llegada: " + fechaHoraArribo.getMinute() + "minutos salida: " + fechaHoraSalida.getMinute());
 		cantidad = this.horasMinutos();
-		aerolinea.sumaHoraVuelo(cantidad);
+		avion.sumaHoraVuelo(cantidad);
+		//aerolinea.sumaHoraVuelo(cantidad);
 		for(Piloto pilo: listaPilotos){
 			pilo.sumaHoraVuelo(cantidad);
 			
 		}
+		for(Piloto p: listaPilotos){
+			listamayor.add(p);
+		}
+		
 	}
 	public LinkedList<Piloto> getListaPilotos() {
 		return listaPilotos;
@@ -105,7 +115,7 @@ public class Vuelo {
 	public void detalleAsignaciones(){
 		int contador=0;
 		
-			System.out.println("Detalle de asignaciones - Vuelo "+ this.getCondigoVuelo());
+			System.out.println("\nDetalle de asignaciones - Vuelo "+ this.getCondigoVuelo());
 			for(Asiento s: avion.getListaAsientos()){
 				for(Asignacion p: pasajeros){
 				
@@ -124,8 +134,7 @@ public class Vuelo {
 	}
 		
 	}
-	
-	
+
 	private int horasMinutos(){
 		int cantidad=0;
 		if(fechaHoraArribo.getMinute() >= fechaHoraSalida.getMinute())
@@ -134,13 +143,47 @@ public class Vuelo {
 			cantidad = ((fechaHoraArribo.getHour() - fechaHoraSalida.getHour())* 60) - (fechaHoraSalida.getMinute() - fechaHoraArribo.getMinute());
 		return cantidad;
 	}
-	
-	
-	
+
 	public void detallesVuelo(){
-		System.out.println(avion.getModelo() + "\n"+ fechaHoraSalida.getDayOfWeek() + " "+ fechaHoraSalida.getDayOfMonth() + " de " + fechaHoraSalida.getMonth() +" "+ fechaHoraSalida.getHour() + ":" + fechaHoraSalida.getMinute() + salida.getCodigo() + "(" + salida.getCiudad().getNombre() + "-" + salida.getNombre() + ")" + "\n"
+		
+		System.out.println("\nDetalle de Vuelo\n"+avion.getModelo() + "\n"+ fechaHoraSalida.getDayOfWeek() + " "+ fechaHoraSalida.getDayOfMonth() + " de " + fechaHoraSalida.getMonth() +" "+ fechaHoraSalida.getHour() + ":" + fechaHoraSalida.getMinute() + salida.getCodigo() + "(" + salida.getCiudad().getNombre() + "-" + salida.getNombre() + ")" + "\n"
 				+ fechaHoraArribo.getDayOfWeek() + " "+ fechaHoraArribo.getDayOfMonth() + " de " + fechaHoraArribo.getMonth() +" "+ fechaHoraArribo.getHour() + ":" + fechaHoraArribo.getMinute() + arribo.getCodigo() + "(" + arribo.getCiudad().getNombre() + "-" + arribo.getNombre() + ")" + "\n"
 				+ "Operado por "+ aerolinea.getNombre() + "." + "Duracion " + this.horasMinutos()/60 + "h " + this.horasMinutos()%60 + "m"
 				);
 	}
-}
+
+	public static void mayoresPiloto(){
+		LinkedList <Piloto> imprimir= new LinkedList<Piloto>();
+		//Period edadActual= Period.ofDays(1);
+		System.out.println("\nPilotos mayores a 40 años\n");
+			for(Piloto p: listamayor){
+				//edadActual = Period.between(p.getFechaNacimiento(), LocalDate.now());
+				if(p.getEdadActual() >40){
+					imprimir.add(p);
+					
+				}
+			}
+			
+						
+		//LinkedLis
+			Collections.sort(imprimir, new Comparator<Piloto>(){
+				@Override
+				public int compare(Piloto p1, Piloto p2){
+					return new Integer(p2.getEdadActual()).compareTo(new Integer(p1.getEdadActual()));
+				}
+			});
+
+		//Collections.sort(imprimir, new Comparator<Integer>);
+			for(Piloto p: imprimir){
+				System.out.println(p.getApellido()+ ", " +p.getNombre() + "-" + p.getEdadActual());
+			}
+		
+		
+			//listamayor
+		}
+	
+	}
+
+
+
+

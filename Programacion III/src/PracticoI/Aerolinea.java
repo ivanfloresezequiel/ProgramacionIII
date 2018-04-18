@@ -3,7 +3,7 @@ package PracticoI;
 public class Aerolinea {
 	private int idAerolinea;
 	private String nombre;
-	private int horasVuelo=0;
+	//private int horasVuelo=0;
 	public Aerolinea(int idAerolinea, String nombre) {
 		super();
 		this.idAerolinea = idAerolinea;
@@ -21,14 +21,8 @@ public class Aerolinea {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public int getHorasVuelo() {
-		int cantidad=0;
-		cantidad= (horasVuelo/60);
-		return cantidad;
-	}
-	public void sumaHoraVuelo(int cantidad){
-		horasVuelo+=cantidad;
-	}
+	
+	
 	
 	
 	

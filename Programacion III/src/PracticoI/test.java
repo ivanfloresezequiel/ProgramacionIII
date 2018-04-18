@@ -3,6 +3,7 @@ package PracticoI;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.Period;
 import java.util.Calendar;
 import java.util.LinkedList;
 
@@ -25,6 +26,9 @@ public class test {
 		Aerolinea austral = new Aerolinea(2,"Austral");
 		Aerolinea latam = new Aerolinea(3,"LATAM");
 		Aerolinea iberia = new Aerolinea(4,"Iberia");
+		
+	
+		
 		Piloto primer = new Piloto(1,"Perez","Juan Antonio","07071970",LocalDate.of(1970, 07, 07));
 		Piloto segundo = new Piloto(2,"Martinez","Juan Ignacio","08081978", LocalDate.of(1978,8,8));
 		Piloto tercero = new Piloto(3,"Lopez","Juan Carlos","05051950",LocalDate.of(1950, 05, 05));
@@ -34,7 +38,11 @@ public class test {
 		Pasajero pTercero = new Pasajero(3,"20987654324","Martinez","Martin Marcos","98765432");
 		Pasajero pCuarto = new Pasajero(4,"20198273644","Rodriguez","Rodrigo Rogelio","19827364");
 		
-		
+		LinkedList<Piloto> listaPilotoPrueba = new LinkedList<Piloto>();
+		listaPilotoPrueba.add(primer);
+		listaPilotoPrueba.add(segundo);
+		listaPilotoPrueba.add(tercero);
+		listaPilotoPrueba.add(cuarto);
 		 Asiento asiento1 = new Asiento(1,"A1");
 		 Asiento asiento2 = new Asiento(2,"B1");
 		 Asiento asiento3 = new Asiento(3,"C1");
@@ -106,23 +114,47 @@ public class test {
 		 Avion avion2 = new Avion(2,"Airbus A330-233","LV-FNI",lista2);
 		 Avion avion3 = new Avion(3,"Boein 737-8MB","LV-FYK",lista3);
 		 Avion avion4 = new Avion(4,"Embraer ERJ-190-100AR","LV-CIH",lista4);
+		 
+		 
+		 LinkedList<Avion> listaAvion = new LinkedList();
+		 listaAvion.add(avion1);
+		 listaAvion.add(avion2);
+		 listaAvion.add(avion3);
+		 listaAvion.add(avion4);
 		 //Pilotos para vuelo1
 		 LinkedList<Piloto> listaPiloto1 = new LinkedList<Piloto>();
 		 listaPiloto1.add(primer);listaPiloto1.add(segundo);
-		 Vuelo vuelo1 = new Vuelo("AR2443",aeropuerto1,LocalDateTime.of(2018, 04, 10, 22, 50),aeropuerto2,LocalDateTime.of(2018, 04, 10, 23, 10),austral,listaPiloto1,avion4,paraVuelo1);
+		 LinkedList<Piloto> listaPiloto2 = new LinkedList<Piloto>();
+		 listaPiloto2.add(cuarto);
+		 Vuelo vuelo3 = new Vuelo("AR2443",aeropuerto1,LocalDateTime.of(2018, 04, 10, 21, 10),aeropuerto2,LocalDateTime.of(2018, 04, 10, 23, 50),austral,listaPiloto2,avion4,paraVuelo1);
+		 Vuelo vuelo1 = new Vuelo("AR2443",aeropuerto1,LocalDateTime.of(2018, 04, 10, 21, 10),aeropuerto2,LocalDateTime.of(2018, 04, 10, 23, 50),austral,listaPiloto1,avion4,paraVuelo1);
 		 
+		 listaPiloto1.add(tercero);listaPiloto1.add(cuarto);
+		 Vuelo vuelo2 = new Vuelo("AR2443",aeropuerto1,LocalDateTime.of(2018, 04, 10, 21, 10),aeropuerto2,LocalDateTime.of(2018, 04, 10, 23, 50),austral,listaPiloto1,avion4,paraVuelo1);
 		
 				
-		System.out.println(primer.getHoraVuelo());	
-				
-		System.out.println(aeropuerto1.toString());
+		
+		System.out.println(aeropuerto2.toString());
+		
+	
+		//System.out.println(listaPilotoPrueba.get(0).getHoraVuelo());
 		
 		vuelo1.detallesVuelo();
 		
 		vuelo1.detalleAsignaciones();
 
+		vuelo1.mayoresPiloto();
 		
 		
+		System.out.println("\nRanking de pilotos con mas horas de vuelo. \n" );
+		for(Piloto p: listaPilotoPrueba){
+			System.out.println( p.getApellido()+ ", " +p.getNombre() + "-" + Period.between(p.getFechaNacimiento(), LocalDate.now()).getYears() + ". " + p.getHoraVuelo() + " hs de vuelo");
+		}
+		
+		System.out.println("\nRanking de Aviones con mas horas de vuelo. \n" );
+		for(Avion p: listaAvion){
+			System.out.println( p.getModelo() + " ("+ p.getMatricula()+") -" + p.getHorasVuelo()+ "hs de vuelo");
+		}
 	}
 
 }
