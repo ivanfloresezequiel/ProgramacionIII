@@ -5,11 +5,15 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Period;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedList;
+import java.util.List;
 
 public class test {
 
 	public static void main(String[] args) {
+		
 		Ciudad laRioja = new Ciudad(1,"La Rioja","5360");
 		Ciudad buenosAires = new Ciudad(2,"Buenos Aires","1000");
 		Ciudad mendoza = new Ciudad(3,"Mendoza","5500");
@@ -126,8 +130,8 @@ public class test {
 		 listaPiloto1.add(primer);listaPiloto1.add(segundo);
 		 LinkedList<Piloto> listaPiloto2 = new LinkedList<Piloto>();
 		 listaPiloto2.add(cuarto);
-		 Vuelo vuelo3 = new Vuelo("AR2443",aeropuerto1,LocalDateTime.of(2018, 04, 10, 21, 10),aeropuerto2,LocalDateTime.of(2018, 04, 10, 23, 50),austral,listaPiloto2,avion4,paraVuelo1);
-		 Vuelo vuelo1 = new Vuelo("AR2443",aeropuerto1,LocalDateTime.of(2018, 04, 10, 21, 10),aeropuerto2,LocalDateTime.of(2018, 04, 10, 23, 50),austral,listaPiloto1,avion4,paraVuelo1);
+		 Vuelo vuelo3 = new Vuelo("AR2443",aeropuerto1,LocalDateTime.of(2018, 04, 9, 20, 40),aeropuerto2,LocalDateTime.of(2018, 04, 9, 22, 20),austral,listaPiloto2,avion4,paraVuelo1);
+		 Vuelo vuelo1 = new Vuelo("AR2443",aeropuerto1,LocalDateTime.of(2018, 04, 10, 20, 50),aeropuerto2,LocalDateTime.of(2018, 04, 11, 01, 20),austral,listaPiloto1,avion4,paraVuelo1);
 		 
 		 listaPiloto1.add(tercero);listaPiloto1.add(cuarto);
 		 Vuelo vuelo2 = new Vuelo("AR2443",aeropuerto1,LocalDateTime.of(2018, 04, 10, 21, 10),aeropuerto2,LocalDateTime.of(2018, 04, 10, 23, 50),austral,listaPiloto1,avion4,paraVuelo1);
@@ -137,20 +141,43 @@ public class test {
 		System.out.println(aeropuerto2.toString());
 		
 	
-		//System.out.println(listaPilotoPrueba.get(0).getHoraVuelo());
+		
 		
 		vuelo1.detallesVuelo();
-		
+		vuelo2.detallesVuelo();
+		vuelo3.detallesVuelo();
 		vuelo1.detalleAsignaciones();
 
-		vuelo1.mayoresPiloto();
+		Vuelo.mayoresPiloto();
+		
+		
+		
+	
+		Collections.sort(listaPilotoPrueba, new Comparator<Piloto>(){
+			@Override
+			public int compare(Piloto p1, Piloto p2){
+				return new Integer(p2.getHoraVuelo()).compareTo(new Integer(p1.getHoraVuelo()));
+			}
+
+			
+		});
 		
 		
 		System.out.println("\nRanking de pilotos con mas horas de vuelo. \n" );
+		
 		for(Piloto p: listaPilotoPrueba){
 			System.out.println( p.getApellido()+ ", " +p.getNombre() + "-" + Period.between(p.getFechaNacimiento(), LocalDate.now()).getYears() + ". " + p.getHoraVuelo() + " hs de vuelo");
 		}
 		
+		
+		Collections.sort(listaAvion, new Comparator<Avion>(){
+			@Override
+			public int compare(Avion p1, Avion p2){
+				return new Integer(p2.getHorasVuelo()).compareTo(new Integer(p1.getHorasVuelo()));
+			}
+
+			
+		});
 		System.out.println("\nRanking de Aviones con mas horas de vuelo. \n" );
 		for(Avion p: listaAvion){
 			System.out.println( p.getModelo() + " ("+ p.getMatricula()+") -" + p.getHorasVuelo()+ "hs de vuelo");

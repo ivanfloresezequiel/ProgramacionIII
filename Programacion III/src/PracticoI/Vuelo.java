@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.time.Period;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.LinkedList;
 
@@ -137,12 +138,21 @@ public class Vuelo {
 
 	private int horasMinutos(){
 		int cantidad=0;
-		if(fechaHoraArribo.getMinute() >= fechaHoraSalida.getMinute())
-			cantidad = ((fechaHoraArribo.getHour() - fechaHoraSalida.getHour())* 60) + (fechaHoraArribo.getMinute() - fechaHoraSalida.getMinute());
-		else
-			cantidad = ((fechaHoraArribo.getHour() - fechaHoraSalida.getHour())* 60) - (fechaHoraSalida.getMinute() - fechaHoraArribo.getMinute());
-		return cantidad;
-	}
+		LocalDate fechaLlegada = LocalDate.of(fechaHoraArribo.getYear(), fechaHoraArribo.getMonthValue(),fechaHoraArribo.getDayOfMonth());
+		LocalDate fechaSalida = LocalDate.of(fechaHoraSalida.getYear(), fechaHoraSalida.getMonthValue(), fechaHoraSalida.getDayOfMonth());
+		int diferencia = Period.between(fechaSalida,fechaLlegada).getDays();
+		//System.out.println("diferencia igual= " + diferencia);
+		if(diferencia >= 1){
+			cantidad = (1440 -((fechaHoraSalida.getHour()*60) + fechaHoraSalida.getMinute())) + (fechaHoraArribo.getHour() * 60 )+ fechaHoraArribo.getMinute();
+		}
+		else{
+			if(fechaHoraArribo.getMinute() >= fechaHoraSalida.getMinute())
+				cantidad = ((fechaHoraArribo.getHour() - fechaHoraSalida.getHour())* 60) + (fechaHoraArribo.getMinute() - fechaHoraSalida.getMinute());
+			else
+				cantidad = ((fechaHoraArribo.getHour() - fechaHoraSalida.getHour())* 60) - (fechaHoraSalida.getMinute() - fechaHoraArribo.getMinute());
+		}
+			return cantidad;
+		}
 
 	public void detallesVuelo(){
 		
