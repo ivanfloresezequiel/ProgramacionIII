@@ -1,5 +1,6 @@
 package PracticoI;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Period;
@@ -8,6 +9,7 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.Locale;
 
 public class Vuelo {
 	
@@ -121,12 +123,12 @@ public class Vuelo {
 				for(Asignacion p: pasajeros){
 				
 						if ( p.getAsiento().getNumeroAsiento() == s.getNumeroAsiento()){
-								System.out.println("Asiento "+ s.getNumeroAsiento() + "-"+"Ocupado");
+								System.out.println("Asiento"+ s.getNumeroAsiento() + "-"+"Ocupado");
 								contador=1;
 						}
 				}
 				if(contador==0){
-					System.out.println("Asiento "+ s.getNumeroAsiento() + "-"+"Libre");
+					System.out.println("Asiento"+ s.getNumeroAsiento() + "-"+"Libre");
 				
 				}
 				contador=0;
@@ -138,10 +140,12 @@ public class Vuelo {
 
 	private int horasMinutos(){
 		int cantidad=0;
+		//SimpleDateFormat fechaLlegada1 = new SimpleDateFormat("fechaHoraArribo.getDayOfMonth() 'de' fechaHoraArribo.getMonth() 'de' fechaHoraArribo.getYear()", new locale("es"));
 		LocalDate fechaLlegada = LocalDate.of(fechaHoraArribo.getYear(), fechaHoraArribo.getMonthValue(),fechaHoraArribo.getDayOfMonth());
 		LocalDate fechaSalida = LocalDate.of(fechaHoraSalida.getYear(), fechaHoraSalida.getMonthValue(), fechaHoraSalida.getDayOfMonth());
 		int diferencia = Period.between(fechaSalida,fechaLlegada).getDays();
 		//System.out.println("diferencia igual= " + diferencia);
+		
 		if(diferencia >= 1){
 			cantidad = (1440 -((fechaHoraSalida.getHour()*60) + fechaHoraSalida.getMinute())) + (fechaHoraArribo.getHour() * 60 )+ fechaHoraArribo.getMinute();
 		}
@@ -155,7 +159,9 @@ public class Vuelo {
 		}
 
 	public void detallesVuelo(){
-		
+		//SimpleDateFormat formato = new SimpleDateFormat("day 'de' MMMM 'del' yyyy", new Locale("es"));
+		//String horaLlegada = formato.format(fechaHoraArribo);
+		//System.out.println(horaLlegada);
 		System.out.println("\nDetalle de Vuelo\n"+avion.getModelo() + "\n"+ fechaHoraSalida.getDayOfWeek() + " "+ fechaHoraSalida.getDayOfMonth() + " de " + fechaHoraSalida.getMonth() +" "+ fechaHoraSalida.getHour() + ":" + fechaHoraSalida.getMinute() + salida.getCodigo() + "(" + salida.getCiudad().getNombre() + "-" + salida.getNombre() + ")" + "\n"
 				+ fechaHoraArribo.getDayOfWeek() + " "+ fechaHoraArribo.getDayOfMonth() + " de " + fechaHoraArribo.getMonth() +" "+ fechaHoraArribo.getHour() + ":" + fechaHoraArribo.getMinute() + arribo.getCodigo() + "(" + arribo.getCiudad().getNombre() + "-" + arribo.getNombre() + ")" + "\n"
 				+ "Operado por "+ aerolinea.getNombre() + "." + "Duracion " + this.horasMinutos()/60 + "h " + this.horasMinutos()%60 + "m"

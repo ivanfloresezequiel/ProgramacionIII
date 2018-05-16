@@ -10,14 +10,27 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
+import controladoras.crudCiudad;
+
 public class test {
 
 	public static void main(String[] args) {
+		
 		
 		Ciudad laRioja = new Ciudad(1,"La Rioja","5360");
 		Ciudad buenosAires = new Ciudad(2,"Buenos Aires","1000");
 		Ciudad mendoza = new Ciudad(3,"Mendoza","5500");
 		Ciudad tucuman = new Ciudad(4,"Tucuman","4000");
+		
+		//crudCiudad.create();
+		if(crudCiudad.create(laRioja)){
+			System.out.println("La Ciudad se creó");
+		}
+		crudCiudad.create(buenosAires);
+		crudCiudad.create(mendoza);
+		crudCiudad.create(tucuman);
+		
+		//System.out.println("Traer UNO: \n" + crudCiudad.TraerUno(1).getNombre());
 		
 		
 		Aeropuerto aeropuerto1 = new Aeropuerto(1,"Aeropuerto capitan Vicente Almandos",laRioja,"IRJ");
@@ -137,10 +150,10 @@ public class test {
 		 Vuelo vuelo2 = new Vuelo("AR2443",aeropuerto1,LocalDateTime.of(2018, 04, 10, 21, 10),aeropuerto2,LocalDateTime.of(2018, 04, 10, 23, 50),austral,listaPiloto1,avion4,paraVuelo1);
 		
 				
-		
+		 System.out.println(aeropuerto1.toString());
 		System.out.println(aeropuerto2.toString());
-		
-	
+		System.out.println(aeropuerto3.toString());
+		System.out.println(aeropuerto4.toString());
 		
 		
 		vuelo1.detallesVuelo();
