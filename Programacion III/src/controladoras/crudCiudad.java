@@ -13,18 +13,18 @@ public class crudCiudad {
 		boolean resultado=true;
 		for(Ciudad ciudad1 : listaCiudad){
 			if(ciudad1.getIdCiudad() == c1.getIdCiudad()){
-				System.out.println("No se pudo crear la ciudad, el ID ya existe");
+				//System.out.println("No se pudo crear la ciudad, el ID ya existe");
 				resultado = false;
 				break;
 			}
 			if(ciudad1.getNombre().equals(c1.getNombre())){
-				System.out.print("Ya existe una ciudad con ese nombre");
+				//System.out.print("Ya existe una ciudad con ese nombre");
 				resultado = false;
 				break;
 			}
 			
 			if(ciudad1.getCodigoPostal().equals(c1.getCodigoPostal())){
-				System.out.println("Ya existe una ciudad con el mismo CP");
+				//System.out.println("Ya existe una ciudad con el mismo CP");
 				resultado = false;
 			}
 			
