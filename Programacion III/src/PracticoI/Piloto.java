@@ -1,5 +1,6 @@
 package PracticoI;
 
+import java.sql.Date;
 import java.text.Collator;
 import java.time.LocalDate;
 import java.time.Period;
@@ -15,7 +16,7 @@ public class Piloto implements Comparator{
 	private int horaVuelo=0;
 	private int edadActual=0;
 	
-	public Piloto(int idPiloto,String nombre, String apellido, String documento, LocalDate fechaNacimiento) {
+	public Piloto(int idPiloto,String apellido, String nombre, String documento, LocalDate fechaNacimiento) {
 		super();
 		this.nombre = nombre;
 		this.idPiloto = idPiloto;
@@ -29,8 +30,9 @@ public class Piloto implements Comparator{
 	
 
 	
-	public int getEdadActual(){
-		return edadActual=Period.between(this.getFechaNacimiento(), LocalDate.now()).getYears();
+	public int getAge(LocalDate fechaActual){
+		int resultado=Period.between(this.getFechaNacimiento(),fechaActual).getYears();
+		return resultado;
 	}
 		
 	
@@ -61,8 +63,8 @@ public class Piloto implements Comparator{
 	public void setFechaNacimiento(LocalDate fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
-	public String getNombre() {
-		return nombre;
+	public String getSurnameAndName() {
+		return apellido+ ", "+nombre;
 	}
 	public void setNombre(String nombre) {
 		this.nombre = nombre;

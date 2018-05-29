@@ -5,7 +5,7 @@ public class Aeropuerto {
 	private String nombre;
 	private Ciudad ciudad;
 	private String codigo;
-	public Aeropuerto(int idAeropuerto, String nombre, Ciudad ciudad, String codigo) {
+	public Aeropuerto(int idAeropuerto, String nombre, String codigo, Ciudad ciudad) {
 		super();
 		this.idAeropuerto = idAeropuerto;
 		this.nombre = nombre;
@@ -36,8 +36,8 @@ public class Aeropuerto {
 	public void setCodigo(String codigo) {
 		this.codigo = codigo;
 	}
-	@Override
-	public String toString() {
+	
+	public String showDenomination() {
 		return  nombre + " - " + ciudad.getNombre() + " - " + codigo ;
 	}
 	
