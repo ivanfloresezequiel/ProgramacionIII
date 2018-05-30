@@ -3,6 +3,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.time.LocalDateTime;
 import org.junit.jupiter.api.Test;
 
+import PracticoI.Aerolinea;
+import PracticoI.Aeropuerto;
+import PracticoI.Avion;
+import PracticoI.Ciudad;
+import PracticoI.Vuelo;
+
 class VueloTest {
 
 	@Test
