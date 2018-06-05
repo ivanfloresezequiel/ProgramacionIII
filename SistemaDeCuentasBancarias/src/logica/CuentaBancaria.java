@@ -7,13 +7,15 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 public class CuentaBancaria {
-	private double saldo = 0.0;
-	private ArrayList<Movimiento> movimientosCuenta = new ArrayList<>();   
+	protected double saldo = 0.0;
 
+	protected ArrayList<Movimiento> movimientosCuenta = new ArrayList<>();   
+
+	
 	public double getSaldo() {
 		return saldo;
 	}
-
+	
 	public void depositar(double montoDinero) {
 		if (montoDinero > 0){
 			saldo += montoDinero;

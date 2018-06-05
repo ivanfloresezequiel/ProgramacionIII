@@ -9,9 +9,28 @@ import java.time.Month;
 import org.junit.jupiter.api.Test;
 
 import logica.CuentaBancaria;
+import logica.TipoCuentas;
 
 class TestCuentaBancariaNuevo {
 
+	
+	@Test
+	public void testCuentaBancariaPermDescubierto() {
+		TipoCuentas cuentaB = new TipoCuentas("b");
+		cuentaB.depositar(50);
+		cuentaB.extraer(150);
+		assertEquals(100.00,cuentaB.getDescubierto());
+		
+	}
+	@Test
+	public void testCuentaBancariaEspecialUnaSolaExtraccionAlMes() {
+		TipoCuentas cuentaA = new TipoCuentas("a");
+		cuentaA.depositar(50);
+		cuentaA.depositar(150);
+		assertEquals(50,cuentaA.getSaldo());
+		
+		
+	}
 	@Test
 	public void testLaCuentaBancariaDebeTenerSaldoCero() {
 		CuentaBancaria cuentaBancaria1 = new CuentaBancaria();
@@ -59,8 +78,8 @@ class TestCuentaBancariaNuevo {
 		LocalDateTime dateDesde = LocalDateTime.now();
 		LocalDateTime dateHasta = LocalDateTime.now();
 
-		String valorComparar ="DEPOSITO 500.0 25 MAY 2018\n" + 
-				"ESTRACCI 200.0 25 MAY 2018\n";
+		String valorComparar ="DEPOSITO 500.0 30 MAY 2018\n" + 
+				"ESTRACCI 200.0 30 MAY 2018\n";
 		assertEquals(valorComparar,cuentaBancaria1.consultarMovimientos(dateDesde, dateHasta));
 	}
 	public void testCuentaBancariasConsultarLosMovimientosDesdeHasta(){

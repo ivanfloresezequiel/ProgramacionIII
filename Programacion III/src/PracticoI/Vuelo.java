@@ -139,7 +139,7 @@ public class Vuelo {
 		
 	}
 
-	private int horasMinutos(){
+	public int horasMinutos(){
 		int cantidad=0;
 		//SimpleDateFormat fechaLlegada1 = new SimpleDateFormat("fechaHoraArribo.getDayOfMonth() 'de' fechaHoraArribo.getMonth() 'de' fechaHoraArribo.getYear()", new locale("es"));
 		LocalDate fechaLlegada = LocalDate.of(fechaHoraArribo.getYear(), fechaHoraArribo.getMonthValue(),fechaHoraArribo.getDayOfMonth());

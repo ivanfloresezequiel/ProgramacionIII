@@ -1,11 +1,22 @@
 package controladoraTest;
 
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.Collection;
 import java.util.LinkedList;
 
 import PracticoI.Avion;
+import PracticoI.Vuelo;
 
 public class GestorAvion {
 	public LinkedList<Avion> coleccionAviones= new LinkedList<Avion>();
+	
+	
+	public GestorAvion(LinkedList<Avion> list) {
+		coleccionAviones.addAll(list);
+	}
+
+
 	public boolean crearAvion(Avion nuevoAvion){
 		boolean resultado = true;
 		for(Avion av: coleccionAviones){
@@ -30,4 +41,23 @@ public class GestorAvion {
 		}
 		return resultado;
 	}
+
+
+	public LinkedList<Avion> getColeccionAviones() {
+		
+		return coleccionAviones;
+	}
+
+
+	public int horasVueloAvion(Collection<Vuelo> crearVuelos, Avion avion1) {
+		int sumaHoras=0;
+		for(Vuelo vl: crearVuelos) {
+			if(vl.getAvion().getIdAvion() == avion1.getIdAvion()) {
+				sumaHoras += vl.horasMinutos();
+			}
+		}
+		return sumaHoras/60;
+	}
+
+	
 }
