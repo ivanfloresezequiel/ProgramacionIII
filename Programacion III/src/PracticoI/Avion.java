@@ -48,5 +48,6 @@ public class Avion {
 		cantidad= (horasVuelo/60);
 		return cantidad;
 	}
+	
 }
 

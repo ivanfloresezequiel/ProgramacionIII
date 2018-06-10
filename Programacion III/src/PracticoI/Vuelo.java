@@ -141,11 +141,11 @@ public class Vuelo {
 
 	public int horasMinutos(){
 		int cantidad=0;
-		//SimpleDateFormat fechaLlegada1 = new SimpleDateFormat("fechaHoraArribo.getDayOfMonth() 'de' fechaHoraArribo.getMonth() 'de' fechaHoraArribo.getYear()", new locale("es"));
+		
 		LocalDate fechaLlegada = LocalDate.of(fechaHoraArribo.getYear(), fechaHoraArribo.getMonthValue(),fechaHoraArribo.getDayOfMonth());
 		LocalDate fechaSalida = LocalDate.of(fechaHoraSalida.getYear(), fechaHoraSalida.getMonthValue(), fechaHoraSalida.getDayOfMonth());
 		int diferencia = Period.between(fechaSalida,fechaLlegada).getDays();
-		//System.out.println("diferencia igual= " + diferencia);
+		
 		
 		if(diferencia >= 1){
 			cantidad = (1440 -((fechaHoraSalida.getHour()*60) + fechaHoraSalida.getMinute())) + (fechaHoraArribo.getHour() * 60 )+ fechaHoraArribo.getMinute();
@@ -201,16 +201,20 @@ public class Vuelo {
 
 	
 	public String getDetails() {
-		Locale l = new Locale("es","PE");
+		Locale l = new Locale("es","ES");
 		String resultado = "Vuelo "+ this.condigoVuelo + " - " + avion.getModelo() + "\r\n"+ 
-		Character.toUpperCase(fechaHoraSalida.getDayOfWeek().getDisplayName(TextStyle.FULL, l).charAt(0)) + fechaHoraSalida.getDayOfWeek().getDisplayName(TextStyle.FULL, l).substring(1, fechaHoraSalida.getDayOfWeek().getDisplayName(TextStyle.FULL, l).length()).toLowerCase() + " "+ fechaHoraSalida.getDayOfMonth() + " de " + fechaHoraSalida.getMonth().getDisplayName(TextStyle.FULL, l) +" "+ fechaHoraSalida.getHour() + ":" + fechaHoraSalida.getMinute() +" "+ salida.getCodigo() + " (" + salida.getCiudad().getNombre() + " - " + salida.getNombre() + ")" + "\r\n"
-		+ Character.toUpperCase(fechaHoraArribo.getDayOfWeek().getDisplayName(TextStyle.FULL, l).charAt(0)) + fechaHoraSalida.getDayOfWeek().getDisplayName(TextStyle.FULL, l).substring(1, fechaHoraArribo.getDayOfWeek().getDisplayName(TextStyle.FULL, l).length()).toLowerCase()
-		 + " "+ fechaHoraArribo.getDayOfMonth() + " de " + fechaHoraArribo.getMonth().getDisplayName(TextStyle.FULL, l) +" "+ fechaHoraArribo.getHour() + ":" + fechaHoraArribo.getMinute() +" " +arribo.getCodigo() + " (" + arribo.getCiudad().getNombre() + " - " + arribo.getNombre() + ")" + "\r\n"
+		fechaHoraSpanish(fechaHoraSalida) +" "+ salida.getCodigo() + " (" + salida.getCiudad().getNombre() + " - " + salida.getNombre() + ")" + "\r\n"
+		+ fechaHoraSpanish(fechaHoraArribo)+ " "+ arribo.getCodigo() +" (" +  arribo.getCiudad().getNombre() + " - " + arribo.getNombre() + ")" + "\r\n"
 				+ "Operado por "+ aerolinea.getNombre() + "." + " Duración " + this.horasMinutos()/60 + "h " + this.horasMinutos()%60 + "m";
 		
 		return (resultado);
 				
 		
+	}
+	public String fechaHoraSpanish(LocalDateTime departureDateTime) {
+		Locale l = new Locale("es","ES");
+		// TODO Auto-generated method stub
+		return Character.toUpperCase(departureDateTime.getDayOfWeek().getDisplayName(TextStyle.FULL, l).charAt(0)) + departureDateTime.getDayOfWeek().getDisplayName(TextStyle.FULL, l).substring(1, departureDateTime.getDayOfWeek().getDisplayName(TextStyle.FULL, l).length()).toLowerCase() + " "+ departureDateTime.getDayOfMonth() + " de " + departureDateTime.getMonth().getDisplayName(TextStyle.FULL, l) +" "+ departureDateTime.getHour() + ":" + departureDateTime.getMinute();
 	}
 	
 	}
