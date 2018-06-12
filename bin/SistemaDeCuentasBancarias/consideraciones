@@ -1,0 +1,16 @@
+se solicita crear una cuenta bancaria inicialmente tiene saldo =  0 
+se puede depositar
+se puede depositar solo si el monto a 0
+se puede hacer extraer montos mayores a cero
+
+se presento un cambio en el requerimiento del banco 
+el dueño dice que por inversores nosotros teniamos cuentas bancarias 
+pero al dueño se le ocurren dos ideas 
+		1_ cuentas Especial (solo debe opermitir una extraxion al mes)
+		2_ cuentas con Descuebierto (perm configurar monto en descubierto)
+		
+		MONTO EN DESCUBIERTO (permite que si la cuenta no tiene saldo  el banco te deja 
+		extraer con ese monto en descubierto)
+		plus 1000 saldo 100
+		extraxion maxima 1100
+		

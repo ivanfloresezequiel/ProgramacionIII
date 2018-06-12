@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Period;
 import java.time.format.TextStyle;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
@@ -60,6 +61,20 @@ public class Vuelo {
 		//}
 		
 	}
+	
+	public Vuelo(String condigoVuelo2, Object salida2, LocalDateTime of, Object arribo2, LocalDateTime of2,
+			Object aerolinea2, Collection<Piloto> tripulacion, Object avion2, Object pasajeros2) {
+		this.condigoVuelo = condigoVuelo2;
+		
+		this.fechaHoraSalida = of;
+		
+		this.fechaHoraArribo = of2;
+		
+		this.listaPilotos = (LinkedList<Piloto>) tripulacion;
+		
+	
+	}
+
 	public LinkedList<Piloto> getListaPilotos() {
 		return listaPilotos;
 	}
@@ -172,7 +187,7 @@ public class Vuelo {
 	public static void mayoresPiloto(){
 		LinkedList <Piloto> imprimir= new LinkedList<Piloto>();
 		//Period edadActual= Period.ofDays(1);
-		System.out.println("\nPilotos mayores a 40 años\n");
+		System.out.println("\nPilotos mayores a 40 aï¿½os\n");
 			for(Piloto p: listamayor){
 				//edadActual = Period.between(p.getFechaNacimiento(), LocalDate.now());
 				//if(p.getAge() >40){
@@ -205,7 +220,7 @@ public class Vuelo {
 		String resultado = "Vuelo "+ this.condigoVuelo + " - " + avion.getModelo() + "\r\n"+ 
 		fechaHoraSpanish(fechaHoraSalida) +" "+ salida.getCodigo() + " (" + salida.getCiudad().getNombre() + " - " + salida.getNombre() + ")" + "\r\n"
 		+ fechaHoraSpanish(fechaHoraArribo)+ " "+ arribo.getCodigo() +" (" +  arribo.getCiudad().getNombre() + " - " + arribo.getNombre() + ")" + "\r\n"
-				+ "Operado por "+ aerolinea.getNombre() + "." + " Duración " + this.horasMinutos()/60 + "h " + this.horasMinutos()%60 + "m";
+				+ "Operado por "+ aerolinea.getNombre() + "." + " Duraciï¿½n " + this.horasMinutos()/60 + "h " + this.horasMinutos()%60 + "m";
 		
 		return (resultado);
 				

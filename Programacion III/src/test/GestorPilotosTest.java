@@ -9,10 +9,10 @@ import java.util.LinkedList;
 
 import org.junit.jupiter.api.Test;
 
-import ar.edu.undec.prog3.domain.Piloto;
-import ar.edu.undec.prog3.domain.Vuelo;
-import gestor.GestorPilotos;
 
+import PracticoI.Piloto;
+import PracticoI.Vuelo;
+import controladoraTest.GestorPilotos;
 class GestorPilotosTest {
 
 	@Test
