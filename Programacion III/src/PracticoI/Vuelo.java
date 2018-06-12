@@ -25,14 +25,12 @@ public class Vuelo {
 	private Avion avion;
 	private LinkedList<Asignacion> pasajeros;
 	
-	static final HashSet <Piloto> listamayor= new HashSet<Piloto>();
-	
 	
 	public Vuelo(String condigoVuelo, Aeropuerto salida, LocalDateTime fechaHoraSalida, Aeropuerto arribo,
 			LocalDateTime fechaHoraArribo, Aerolinea aerolinea, LinkedList<Piloto> listaPilotos, Avion avion,
 			LinkedList<Asignacion> pasajeros) {
 		super();
-		int cantidad=0;
+		
 		this.condigoVuelo = condigoVuelo;
 		this.salida = salida;
 		this.fechaHoraSalida = fechaHoraSalida;
@@ -44,21 +42,7 @@ public class Vuelo {
 		this.avion = avion;
 		this.pasajeros = pasajeros;
 		
-		//if(fechaHoraArribo.getMinute() > fechaHoraSalida.getMinute())
-			//cantidad = ((fechaHoraArribo.getHour() - fechaHoraSalida.getHour())* 60) + (fechaHoraArribo.getMinute() - fechaHoraSalida.getMinute());
-		//else
-			//cantidad = ((fechaHoraArribo.getHour() - fechaHoraSalida.getHour())* 60) - (fechaHoraArribo.getMinute() - fechaHoraSalida.getMinute());
-		//System.out.println("hora de llegada: "+fechaHoraArribo.getHour() + cantidad+ "minutos de llegada: " + fechaHoraArribo.getMinute() + "minutos salida: " + fechaHoraSalida.getMinute());
-		//cantidad = this.horasMinutos();
-		//avion.sumaHoraVuelo(cantidad);
-		//aerolinea.sumaHoraVuelo(cantidad);
-		//for(Piloto pilo: listaPilotos){
-			//pilo.sumaHoraVuelo(cantidad);
-			
-		//}
-		//for(Piloto p: listaPilotos){
-			//listamayor.add(p);
-		//}
+		
 		
 	}
 	
@@ -133,9 +117,8 @@ public class Vuelo {
 	
 	public void detalleAsignaciones(){
 		int contador=0;
-		
-			System.out.println("\nDetalle de asignaciones - Vuelo "+ this.getCondigoVuelo());
-			for(Asiento s: avion.getListaAsientos()){
+		System.out.println("\nDetalle de asignaciones - Vuelo "+ this.getCondigoVuelo());
+		for(Asiento s: avion.getListaAsientos()){
 				for(Asignacion p: pasajeros){
 				
 						if ( p.getAsiento().getNumeroAsiento() == s.getNumeroAsiento()){
@@ -156,12 +139,9 @@ public class Vuelo {
 
 	public int horasMinutos(){
 		int cantidad=0;
-		
 		LocalDate fechaLlegada = LocalDate.of(fechaHoraArribo.getYear(), fechaHoraArribo.getMonthValue(),fechaHoraArribo.getDayOfMonth());
 		LocalDate fechaSalida = LocalDate.of(fechaHoraSalida.getYear(), fechaHoraSalida.getMonthValue(), fechaHoraSalida.getDayOfMonth());
 		int diferencia = Period.between(fechaSalida,fechaLlegada).getDays();
-		
-		
 		if(diferencia >= 1){
 			cantidad = (1440 -((fechaHoraSalida.getHour()*60) + fechaHoraSalida.getMinute())) + (fechaHoraArribo.getHour() * 60 )+ fechaHoraArribo.getMinute();
 		}
@@ -172,46 +152,6 @@ public class Vuelo {
 				cantidad = ((fechaHoraArribo.getHour() - fechaHoraSalida.getHour())* 60) - (fechaHoraSalida.getMinute() - fechaHoraArribo.getMinute());
 		}
 			return cantidad;
-		}
-
-	public void detallesVuelo(){
-		//SimpleDateFormat formato = new SimpleDateFormat("day 'de' MMMM 'del' yyyy", new Locale("es"));
-		//String horaLlegada = formato.format(fechaHoraArribo);
-		//System.out.println(horaLlegada);
-		System.out.println("\nDetalle de Vuelo "+avion.getModelo() + "\n"+ fechaHoraSalida.getDayOfWeek() + " "+ fechaHoraSalida.getDayOfMonth() + " de " + fechaHoraSalida.getMonth() +" "+ fechaHoraSalida.getHour() + ":" + fechaHoraSalida.getMinute() + salida.getCodigo() + "(" + salida.getCiudad().getNombre() + "-" + salida.getNombre() + ")" + "\n"
-				+ fechaHoraArribo.getDayOfWeek() + " "+ fechaHoraArribo.getDayOfMonth() + " de " + fechaHoraArribo.getMonth() +" "+ fechaHoraArribo.getHour() + ":" + fechaHoraArribo.getMinute() + arribo.getCodigo() + "(" + arribo.getCiudad().getNombre() + "-" + arribo.getNombre() + ")" + "\n"
-				+ "Operado por "+ aerolinea.getNombre() + "." + "Duracion " + this.horasMinutos()/60 + "h " + this.horasMinutos()%60 + "m"
-				);
-	}
-
-	public static void mayoresPiloto(){
-		LinkedList <Piloto> imprimir= new LinkedList<Piloto>();
-		//Period edadActual= Period.ofDays(1);
-		System.out.println("\nPilotos mayores a 40 a�os\n");
-			for(Piloto p: listamayor){
-				//edadActual = Period.between(p.getFechaNacimiento(), LocalDate.now());
-				//if(p.getAge() >40){
-					imprimir.add(p);
-					
-				//}
-			}
-			
-						
-		//LinkedLis
-	//		Collections.sort(imprimir, new Comparator<Piloto>(){
-			
-		//		public int compare(Piloto p1, Piloto p2){
-			//		return new Integer(p2.getEdadActual()).compareTo(new Integer(p1.getEdadActual()));
-				//}
-			//});
-
-		//Collections.sort(imprimir, new Comparator<Integer>);
-			//for(Piloto p: imprimir){
-				//System.out.println(p.getApellido()+ ", " +p.getNombre() + "-" + p.getEdadActual());
-			//}
-		
-		
-			//listamayor
 		}
 
 	
@@ -228,7 +168,6 @@ public class Vuelo {
 	}
 	public String fechaHoraSpanish(LocalDateTime departureDateTime) {
 		Locale l = new Locale("es","ES");
-		// TODO Auto-generated method stub
 		return Character.toUpperCase(departureDateTime.getDayOfWeek().getDisplayName(TextStyle.FULL, l).charAt(0)) + departureDateTime.getDayOfWeek().getDisplayName(TextStyle.FULL, l).substring(1, departureDateTime.getDayOfWeek().getDisplayName(TextStyle.FULL, l).length()).toLowerCase() + " "+ departureDateTime.getDayOfMonth() + " de " + departureDateTime.getMonth().getDisplayName(TextStyle.FULL, l) +" "+ departureDateTime.getHour() + ":" + departureDateTime.getMinute();
 	}
 	

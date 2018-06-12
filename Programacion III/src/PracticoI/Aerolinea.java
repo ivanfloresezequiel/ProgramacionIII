@@ -3,7 +3,7 @@ package PracticoI;
 public class Aerolinea {
 	private int idAerolinea;
 	private String nombre;
-	//private int horasVuelo=0;
+	
 	public Aerolinea(int idAerolinea, String nombre) {
 		super();
 		this.idAerolinea = idAerolinea;

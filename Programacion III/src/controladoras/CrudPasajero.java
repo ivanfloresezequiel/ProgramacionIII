@@ -6,30 +6,29 @@ public class CrudPasajero {
 
 	private static LinkedList<Pasajero> listaPasajero = new LinkedList<Pasajero>();
 	
-	public static boolean crearPasajero(Pasajero nuevo) {
+	public static boolean crearPasajero(Pasajero pasajeroNuevo) {
 		boolean resultado = true;
-		
-		for(Pasajero ps: listaPasajero) {
-			if(ps.getIdPasajero() == nuevo.getIdPasajero()) {
+		for(Pasajero pasajeroi: listaPasajero) {
+			if(pasajeroi.getIdPasajero() == pasajeroNuevo.getIdPasajero()) {
 				resultado=false;
 				break;
 			}
-			if(ps.getCUIL().compareTo(nuevo.getCUIL())==0) {
+			if(pasajeroi.getCUIL().compareTo(pasajeroNuevo.getCUIL())==0) {
 				resultado = false;
 				break;
 			}
 		}
 		if(resultado) {
-			listaPasajero.add(nuevo);
+			listaPasajero.add(pasajeroNuevo);
 		}		
 		return resultado;
 	}
-	public static boolean modificarPasajero(Pasajero antiguo, Pasajero nuevo) {
+	public static boolean modificarPasajero(Pasajero pasajeroAntiguo, Pasajero pasajeroNuevo) {
 		boolean resultado = true;
-		for(Pasajero ps: listaPasajero) {
-			if(ps.equals(antiguo)) {
-				if(ps.getIdPasajero()== nuevo.getIdPasajero()) {
-					ps=nuevo;
+		for(Pasajero pasajeroi: listaPasajero) {
+			if(pasajeroi.equals(pasajeroAntiguo)) {
+				if(pasajeroi.getIdPasajero()== pasajeroNuevo.getIdPasajero()) {
+					pasajeroi= pasajeroNuevo;
 				}
 				else {
 					resultado = false;
@@ -42,9 +41,9 @@ public class CrudPasajero {
 	}
 	public static Pasajero traerUnPasajero(int id) {
 		Pasajero resultado = new Pasajero(id, null, null, null, null);
-		for(Pasajero ps: listaPasajero) {
-			if(ps.getIdPasajero() == id) {
-				resultado = ps;
+		for(Pasajero pasajeroi: listaPasajero) {
+			if(pasajeroi.getIdPasajero() == id) {
+				resultado = pasajeroi;
 			}
 		}
 		return resultado;

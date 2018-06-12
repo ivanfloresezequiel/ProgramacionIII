@@ -11,17 +11,14 @@ public class CrudAvion {
 		boolean resultado = true;
 		for(Avion av: listaAvion){
 			if(av.getIdAvion() == nuevoAvion.getIdAvion()){
-				//System.out.println("No se pudo crear el avion, el ID ya existe");
 				resultado= false;
 				break;
 			}
 			if(av.getMatricula() == nuevoAvion.getMatricula()){
-				//System.out.println("No se pudo crear el avion, ya existe un avion con esa matricula");
 				resultado = false;
 				break;
 			}
 			if(nuevoAvion.getListaAsientos().isEmpty()){
-				//System.out.println("No se pudo crear el avion, no posee asientos");
 				resultado = false;
 				break;
 			}
@@ -31,17 +28,16 @@ public class CrudAvion {
 		}
 		return resultado;
 	}
-	public static boolean modificarAvion(Avion antiguo, Avion nuevo){
+	public static boolean modificarAvion(Avion avionAntiguo, Avion avionNuevo){
 		boolean resultado= true;
-		for(Avion av: listaAvion){
-			if(av.equals(antiguo)){
-				if(av.getIdAvion() == nuevo.getIdAvion()){
-					av=nuevo;
+		for(Avion avioni: listaAvion){
+			if(avioni.equals(avionAntiguo)){
+				if(avioni.getIdAvion() == avionNuevo.getIdAvion()){
+					avioni=avionNuevo;
 					break;
 				}
 				else{
 					resultado = false;
-					//System.out.println("No se puede modificar el ID del avion");
 				}
 			}
 			
@@ -51,9 +47,9 @@ public class CrudAvion {
 	}
 	public static Avion traerunoAvion(int id) {
 		Avion resultado= new Avion(0, null, null, null);
-		for(Avion av: listaAvion) {
-			if(av.getIdAvion() == id) {
-				resultado= av;
+		for(Avion avioni: listaAvion) {
+			if(avioni.getIdAvion() == id) {
+				resultado= avioni;
 			}
 		}
 		return resultado;

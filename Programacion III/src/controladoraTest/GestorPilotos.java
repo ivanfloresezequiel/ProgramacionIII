@@ -13,33 +13,33 @@ private static LinkedList<Piloto> listaPiloto= new LinkedList<Piloto>();
 		listaPiloto.addAll(list);
 	}
 
-	public static boolean crearPiloto(Piloto nuevo) {
+	public static boolean crearPiloto(Piloto pilotoNuevo) {
 		boolean resultado = true;
 		
-		for(Piloto pi: listaPiloto) {
-			if(pi.getIdPiloto() == nuevo.getIdPiloto()) {
+		for(Piloto pilotoi: listaPiloto) {
+			if(pilotoi.getIdPiloto() == pilotoNuevo.getIdPiloto()) {
 				resultado= false;
 				break;
 			}
-			if(pi.getDocumento().compareTo(nuevo.getDocumento())==0) {
+			if(pilotoi.getDocumento().compareTo(pilotoNuevo.getDocumento())==0) {
 				resultado = false;
 				break;
 			}
 			
 		}
 		if(resultado) {
-			listaPiloto.add(nuevo);
+			listaPiloto.add(pilotoNuevo);
 		}
 		return resultado;
 	}
-	public static boolean modificarPiloto(Piloto antiguo, Piloto nuevo) {
+	public static boolean modificarPiloto(Piloto pilotoAntiguo, Piloto pilotoNuevo) {
 		boolean resultado = false;
 		
-		for(Piloto pi: listaPiloto) {
-			if(pi.equals(antiguo)) {
-				if(pi.getIdPiloto() == nuevo.getIdPiloto()) {
-					if(pi.getDocumento().compareTo(nuevo.getDocumento()) != 0) {
-						pi=nuevo;
+		for(Piloto pilotoi: listaPiloto) {
+			if(pilotoi.equals(pilotoAntiguo)) {
+				if(pilotoi.getIdPiloto() == pilotoNuevo.getIdPiloto()) {
+					if(pilotoi.getDocumento().compareTo(pilotoNuevo.getDocumento()) != 0) {
+						pilotoi=pilotoNuevo;
 						resultado = true;
 					}
 				}
@@ -49,9 +49,9 @@ private static LinkedList<Piloto> listaPiloto= new LinkedList<Piloto>();
 	}
 	public static Piloto traerUnPiloto(int id) {
 		Piloto resultado = new Piloto(id, null, null, null, null);
-		for(Piloto pi: listaPiloto) {
-			if(pi.getIdPiloto() == id) {
-				resultado = pi;
+		for(Piloto pilotoi: listaPiloto) {
+			if(pilotoi.getIdPiloto() == id) {
+				resultado = pilotoi;
 			}
 		}
 		return resultado;
@@ -62,12 +62,11 @@ private static LinkedList<Piloto> listaPiloto= new LinkedList<Piloto>();
 
 	public int horasVueloPiloto(Collection<Vuelo> crearVuelos, Piloto piloto1) {
 		int sumaHoras=0;
-		for(Vuelo vl: crearVuelos) {
-			if (vl.getListaPilotos() != null) {
-				for(Piloto ps: vl.getListaPilotos()) {
-					if(ps.getIdPiloto() == piloto1.getIdPiloto()) {
-						
-						sumaHoras += vl.horasMinutos();
+		for(Vuelo vueloi: crearVuelos) {
+			if (vueloi.getListaPilotos() != null) {
+				for(Piloto pilotoi: vueloi.getListaPilotos()) {
+					if(pilotoi.getIdPiloto() == piloto1.getIdPiloto()) {
+						sumaHoras += vueloi.horasMinutos();
 					}
 				}
 			

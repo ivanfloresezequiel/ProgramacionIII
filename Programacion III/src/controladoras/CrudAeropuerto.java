@@ -6,34 +6,31 @@ import PracticoI.Aeropuerto;
 
 public class CrudAeropuerto {
 	private static LinkedList<Aeropuerto> listaAeropuerto = new LinkedList<Aeropuerto>();
-	public static boolean crearAeropuerto(Aeropuerto nuevo) {
+	
+	public static boolean crearAeropuerto(Aeropuerto nuevoAeropuerto) {
 		boolean resultado=true;
-		for(Aeropuerto ae: listaAeropuerto) {
-			if(ae.getIdAeropuerto() == nuevo.getIdAeropuerto()) {
-				
+		for(Aeropuerto aeropuertoi: listaAeropuerto) {
+			if(aeropuertoi.getIdAeropuerto() == nuevoAeropuerto.getIdAeropuerto()) {			
 				resultado=false;
 				break;
 			}
-			if(ae.getCodigo() == nuevo.getCodigo()) {
+			if(aeropuertoi.getCodigo() == nuevoAeropuerto.getCodigo()) {
 				resultado=false;
 				break;
 			}
 			if(resultado) {
-				listaAeropuerto.add(nuevo);
+				listaAeropuerto.add(nuevoAeropuerto);
 			}
 			
 		}
-		
-		
 		return resultado;
 	}
-	public static boolean modificarAeropuerto(Aeropuerto antiguo, Aeropuerto nuevo) {
+	public static boolean modificarAeropuerto(Aeropuerto aeropuertoAntiguo, Aeropuerto aeropuertoNuevo) {
 		boolean resultado=true;
-		
-		for(Aeropuerto ae: listaAeropuerto) {
-			if(ae.equals(antiguo)) {
-				if(ae.getIdAeropuerto()== nuevo.getIdAeropuerto()) {
-					ae=nuevo;
+		for(Aeropuerto aeropuertoi: listaAeropuerto) {
+			if(aeropuertoi.equals(aeropuertoAntiguo)) {
+				if(aeropuertoi.getIdAeropuerto()== aeropuertoNuevo.getIdAeropuerto()) {
+					aeropuertoi=aeropuertoNuevo;
 				}
 				else {
 					resultado=false;
@@ -41,18 +38,15 @@ public class CrudAeropuerto {
 			}
 			
 		}
-		
 		return resultado;
 	}
 	public static Aeropuerto traerUnAeropuerto(int id) {
 		Aeropuerto resultado= new Aeropuerto(0, null, null, null);
-		
-		for(Aeropuerto ae: listaAeropuerto) {
-			if(ae.getIdAeropuerto() == id) {
-				resultado = ae;
+		for(Aeropuerto aeropuertoi: listaAeropuerto) {
+			if(aeropuertoi.getIdAeropuerto() == id) {
+				resultado = aeropuertoi;
 			}
 		}
-		
 		return resultado;
 		
 	}

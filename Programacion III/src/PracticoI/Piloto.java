@@ -14,7 +14,7 @@ public class Piloto implements Comparator{
 	private String documento;
 	private LocalDate fechaNacimiento;
 	private int horaVuelo=0;
-	private int edadActual=0;
+
 	
 	public Piloto(int idPiloto,String apellido, String nombre, String documento, LocalDate fechaNacimiento) {
 		super();
@@ -23,8 +23,7 @@ public class Piloto implements Comparator{
 		this.apellido = apellido;
 		this.documento = documento;
 		this.fechaNacimiento = fechaNacimiento;
-		edadActual=Period.between(this.getFechaNacimiento(), LocalDate.now()).getYears();
-	//	edadActual = Period.between(p.getFechaNacimiento(), LocalDate.now()).;
+
 		
 	}
 	
@@ -69,11 +68,7 @@ public class Piloto implements Comparator{
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public int getHoraVuelo() {
-		int cantidad=0;
-		cantidad= (horaVuelo/60);
-		return cantidad;
-	}
+
 	
 	public int compare(Piloto e1, Piloto e2){
 		if(e1.fechaNacimiento.getYear() >= e2.fechaNacimiento.getYear()){

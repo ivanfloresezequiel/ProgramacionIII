@@ -19,19 +19,16 @@ public class GestorAvion {
 
 	public boolean crearAvion(Avion nuevoAvion){
 		boolean resultado = true;
-		for(Avion av: coleccionAviones){
-			if(av.getIdAvion() == nuevoAvion.getIdAvion()){
-				//System.out.println("No se pudo crear el avion, el ID ya existe");
+		for(Avion avioni: coleccionAviones){
+			if(avioni.getIdAvion() == nuevoAvion.getIdAvion()){
 				resultado= false;
 				break;
 			}
-			if(av.getMatricula() == nuevoAvion.getMatricula()){
-				//System.out.println("No se pudo crear el avion, ya existe un avion con esa matricula");
+			if(avioni.getMatricula() == nuevoAvion.getMatricula()){
 				resultado = false;
 				break;
 			}
 			if(nuevoAvion.getListaAsientos().isEmpty()){
-				//System.out.println("No se pudo crear el avion, no posee asientos");
 				resultado = false;
 				break;
 			}
@@ -51,9 +48,9 @@ public class GestorAvion {
 
 	public int horasVueloAvion(Collection<Vuelo> crearVuelos, Avion avion1) {
 		int sumaHoras=0;
-		for(Vuelo vl: crearVuelos) {
-			if(vl.getAvion().getIdAvion() == avion1.getIdAvion()) {
-				sumaHoras += vl.horasMinutos();
+		for(Vuelo vueloi: crearVuelos) {
+			if(vueloi.getAvion().getIdAvion() == avion1.getIdAvion()) {
+				sumaHoras += vueloi.horasMinutos();
 			}
 		}
 		return sumaHoras/60;
