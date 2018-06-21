@@ -22,18 +22,18 @@ class VueloTest {
 		String output = aFlight.getDetails();
 
 		String expected = "Vuelo AR2443 - Embraer ERJ-190-100AR\r\n"
-				+ "Martes 10 de abril 21:10 IRJ (La Rioja - Aeropuerto Capitán Vicente Almandos Almonacid)\r\n"
+				+ "Martes 10 de abril 21:10 IRJ (La Rioja - Aeropuerto Capitan Vicente Almandos Almonacid)\r\n"
 				+ "Martes 10 de abril 22:45 AEP (Buenos Aires - Aeropuerto Buenos Aires Jorge Newbery)\r\n"
-				+ "Operado por Austral. Duración 1h 35m";
+				+ "Operado por Austral. Duracion 1h 35m";
 
 		assertEquals(expected, output);
 
 	}
 
 	// Para este test, se requiere crear una Interface que provea la funcionalidad
-	// de dar la fecha en Español. La clase Vuelo debe implementar esa interface
-	// El método "fechaHoraSpanish" no es un método "normal" de la clase Vuelo, sino
-	// la implementación de un método de interface
+	// de dar la fecha en Espaï¿½ol. La clase Vuelo debe implementar esa interface
+	// El mï¿½todo "fechaHoraSpanish" no es un mï¿½todo "normal" de la clase Vuelo, sino
+	// la implementaciï¿½n de un mï¿½todo de interface
 	@Test
 	void fechaHoraSpanish_LocalDateTimeValue_ReturnsFormatted() {
 		LocalDateTime departureDateTime = LocalDateTime.of(2018, 06, 07, 13, 10);
@@ -69,7 +69,7 @@ class VueloTest {
 
 		Ciudad laRioja = new Ciudad(1, "La Rioja", "5300");
 		Ciudad buenosAires = new Ciudad(2, "Buenos Aires", "1000");
-		Aeropuerto origin = new Aeropuerto(1, "Aeropuerto Capitán Vicente Almandos Almonacid", "IRJ", laRioja);
+		Aeropuerto origin = new Aeropuerto(1, "Aeropuerto Capitan Vicente Almandos Almonacid", "IRJ", laRioja);
 		Aeropuerto destination = new Aeropuerto(2, "Aeropuerto Buenos Aires Jorge Newbery", "AEP", buenosAires);
 		Aerolinea austral = new Aerolinea(1, "Austral");
 

@@ -5,7 +5,6 @@ public class Aerolinea {
 	private String nombre;
 	
 	public Aerolinea(int idAerolinea, String nombre) {
-		super();
 		this.idAerolinea = idAerolinea;
 		this.nombre = nombre;
 	}
@@ -19,7 +18,7 @@ public class Aerolinea {
 		return nombre;
 	}
 	public void setNombre(String nombre) {
-		this.nombre = nombre;
+		this.nombre= nombre;
 	}
 	
 	

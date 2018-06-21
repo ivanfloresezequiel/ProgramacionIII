@@ -66,7 +66,7 @@ private static LinkedList<Piloto> listaPiloto= new LinkedList<Piloto>();
 			if (vueloi.getListaPilotos() != null) {
 				for(Piloto pilotoi: vueloi.getListaPilotos()) {
 					if(pilotoi.getIdPiloto() == piloto1.getIdPiloto()) {
-						sumaHoras += vueloi.horasMinutos();
+						sumaHoras += vueloi.duracionVueloEnMinutos();
 					}
 				}
 			

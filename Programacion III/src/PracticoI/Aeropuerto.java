@@ -6,7 +6,6 @@ public class Aeropuerto {
 	private Ciudad ciudad;
 	private String codigo;
 	public Aeropuerto(int idAeropuerto, String nombre, String codigo, Ciudad ciudad) {
-		super();
 		this.idAeropuerto = idAeropuerto;
 		this.nombre = nombre;
 		this.ciudad = ciudad;

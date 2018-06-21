@@ -7,17 +7,15 @@ import java.time.Period;
 import java.util.Comparator;
 import java.util.LinkedList;
 
-public class Piloto implements Comparator{
+public class Piloto {
 	private int idPiloto;
 	private String apellido;
 	private String nombre;
 	private String documento;
 	private LocalDate fechaNacimiento;
-	private int horaVuelo=0;
 
 	
 	public Piloto(int idPiloto,String apellido, String nombre, String documento, LocalDate fechaNacimiento) {
-		super();
 		this.nombre = nombre;
 		this.idPiloto = idPiloto;
 		this.apellido = apellido;
@@ -27,17 +25,11 @@ public class Piloto implements Comparator{
 		
 	}
 	
-
-	
 	public int getAge(LocalDate fechaActual){
 		int resultado=Period.between(this.getFechaNacimiento(),fechaActual).getYears();
 		return resultado;
 	}
-		
-	
-	public void sumaHoraVuelo(int cantidad){
-		horaVuelo+=cantidad;
-	}
+
 	public int getIdPiloto() {
 		return idPiloto;
 	}
@@ -67,25 +59,6 @@ public class Piloto implements Comparator{
 	}
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
-	}
-
-	
-	public int compare(Piloto e1, Piloto e2){
-		if(e1.fechaNacimiento.getYear() >= e2.fechaNacimiento.getYear()){
-			return 1;}
-		else
-			return -1;
-	}
-
-
-
-
-
-
-	@Override
-	public int compare(Object arg0, Object arg1) {
-		// TODO Auto-generated method stub
-		return 0;
 	}
 
 }

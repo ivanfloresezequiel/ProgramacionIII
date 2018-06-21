@@ -2,11 +2,10 @@ package PracticoI;
 
 public class Asiento {
 	private int idAsiento;
-	private String numeroAsiento;
-	public Asiento(int idAsiento, String numeroAsiento) {
-		super();
+	private String identificacion;
+	public Asiento(int idAsiento, String identificacion) {
 		this.idAsiento = idAsiento;
-		this.numeroAsiento = numeroAsiento;
+		this.identificacion= identificacion;
 	}
 	public int getIdAsiento() {
 		return idAsiento;
@@ -14,11 +13,11 @@ public class Asiento {
 	public void setIdAsiento(int idAsiento) {
 		this.idAsiento = idAsiento;
 	}
-	public String getNumeroAsiento() {
-		return numeroAsiento;
+	public String getIdentificacion() {
+		return identificacion;
 	}
-	public void setNumeroAsiento(String numeroAsiento) {
-		this.numeroAsiento = numeroAsiento;
+	public void setIdentificacion(String identificacion) {
+		this.identificacion = identificacion;
 	}
 	
 	

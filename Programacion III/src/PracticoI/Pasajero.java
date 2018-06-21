@@ -7,18 +7,13 @@ public class Pasajero {
 	private String nombres;
 	private String telefono;
 	public Pasajero(int idPasajero, String cUIL, String apellido, String nombres, String telefono) {
-		super();
 		this.idPasajero = idPasajero;
-		CUIL = cUIL;
+		this.CUIL = cUIL;
 		this.apellido = apellido;
 		this.nombres = nombres;
 		this.telefono = telefono;
 	}
-	@Override
-	public String toString() {
-		return "Pasajero [idPasajero=" + idPasajero + ", CUIL=" + CUIL + ", apellido=" + apellido + ", nombres="
-				+ nombres + ", telefono=" + telefono + "]";
-	}
+
 	public int getIdPasajero() {
 		return idPasajero;
 	}
@@ -29,7 +24,7 @@ public class Pasajero {
 		return CUIL;
 	}
 	public void setCUIL(String cUIL) {
-		CUIL = cUIL;
+		this.CUIL = cUIL;
 	}
 	public String getApellido() {
 		return apellido;
