@@ -9,12 +9,17 @@ import java.util.LinkedList;
 
 import org.junit.jupiter.api.Test;
 
+import entidades.Base;
+import entidades.Cubierta;
+import entidades.Pedido;
+import entidades.Pizza;
+
 class PedidoUnitTest {
 
 	@Test
 	void instanciarPedido_pedidoSinPizza_ReturnFalse() {
 		Pizza pizzaNapolitana=new Pizza("Napolitana",100.80d,new Base("Masa tipo"),cubiertaNapolitana());
-		Pedido unPedido = new Pedido("Perez, Juan","San Martin 123",0d,LocalDate.of(2018, 07, 02),unaPizza);
+		Pedido unPedido = new Pedido("Perez, Juan","San Martin 123",0d,LocalDate.of(2018, 07, 02),pizzaNapolitana);
 		
 		assertEquals(1, unPedido.getPizzas().size());
 	}
@@ -22,7 +27,7 @@ class PedidoUnitTest {
 	@Test
 	void agregarPizza_pedidoConPizza_incrementaColeccion() {
 		Pizza pizzaNapolitana=new Pizza("Napolitana",100.80d,new Base("Masa tipo"),cubiertaNapolitana());
-		Pedido unPedido = new Pedido("Perez, Juan","San Martin 123",0d,LocalDate.of(2018, 07, 02),unaPizza);
+		Pedido unPedido = new Pedido("Perez, Juan","San Martin 123",0d,LocalDate.of(2018, 07, 02),pizzaNapolitana);
 		
 		Pizza pizzaFugazzeta = new Pizza("Fugazzeta", 150.25d, new Base("Masa tipo"), cubiertaFugazzeta());
 		unPedido.agregarPizza(pizzaFugazzeta);
@@ -33,7 +38,7 @@ class PedidoUnitTest {
 	
 	private Collection<Cubierta> cubiertaNapolitana() {
 		Cubierta salsa= new Cubierta("Salsa tomate");
-		Cubierta queso=new Cubierta("Mozzarela");
+		Cubierta queso=new Cubierta( "Mozzarela");
 		Cubierta morron= new Cubierta("Tomate");
 		Cubierta oregano= new Cubierta("Oregano");
 		

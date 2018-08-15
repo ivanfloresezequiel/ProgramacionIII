@@ -1,4 +1,8 @@
 package test;
+import entidades.Base;
+import entidades.Cubierta;
+import entidades.Pedido;
+import entidades.Pizza;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -6,6 +10,10 @@ import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.LinkedList;
+
+import org.junit.Test;
+
+import gestores.GestorPedido;
 
 class GestorPedidoUnitTest {
 
@@ -70,6 +78,7 @@ class GestorPedidoUnitTest {
 	
 
 	private Pedido factoryPedidoSinCliente() {
+		Pizza pizzaNapolitana = new Pizza("Napolitana", 100.80d, new Base("Masa tipo"), cubiertaNapolitana());
 		return new Pedido(null,null,0d,LocalDate.of(2018, 07, 02),pizzaNapolitana);
 	}
 
