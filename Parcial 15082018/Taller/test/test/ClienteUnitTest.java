@@ -1,4 +1,4 @@
-package test;
+package Taller.test.test;
 
 import static org.junit.Assert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -8,9 +8,8 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import clases.Cliente;
-import clases.Vehiculo;
 
+import Taller.src.clases.*;
 class ClienteUnitTest {
 
 	// Atributos Cliente: ID, Apellido, Nombres, Documento, Fecha de Nacimiento, Direccion, Telefono, coleccionVehiculos

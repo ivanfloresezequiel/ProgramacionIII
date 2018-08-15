@@ -1,4 +1,4 @@
-package test;
+package Taller.test.test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -7,9 +7,10 @@ import java.util.LinkedList;
 
 import org.junit.jupiter.api.Test;
 
-import gestor.GestorCliente;
-import clases.Cliente;
-import clases.Vehiculo;
+import Taller.src.gestor.GestorCliente;
+
+import Taller.src.gestor.*;
+import Taller.src.clases.*;
 
 class GestorClientesUnitTest {
 

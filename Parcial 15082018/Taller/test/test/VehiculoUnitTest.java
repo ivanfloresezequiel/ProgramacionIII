@@ -1,14 +1,14 @@
-package test;
+package Taller.test.test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import clases.Vehiculo;
+import Taller.src.clases.*;
 
 class VehiculoUnitTest {
 
-	//Atributos Vehiculo: ID, Marca y Modelo, Patente, Año
+	//Atributos Vehiculo: ID, Marca y Modelo, Patente, Aï¿½o
 
 	@Test
 	void instanciarVehiculo_VehiculoSinPatente_generaError() {

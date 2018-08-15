@@ -1,4 +1,4 @@
-package test;
+package Taller.test.test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -6,9 +6,7 @@ import java.time.LocalDate;
 
 import org.junit.jupiter.api.Test;
 
-import clases.Cliente;
-import clases.Service;
-import clases.Vehiculo;
+import Taller.src.clases.*;
 
 class ServiceUnitTest {
 
