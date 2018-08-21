@@ -26,7 +26,7 @@ public class Mecanico {
 		Mecanico s1 = new Mecanico(idMecanico, apellido, nombres, matricula, fechaDeNacimiento, direccion);
 		
 	
-		if(s1.matricula.equals(null)) {
+		if(matricula == null) {
 			return null;
 			
 		}

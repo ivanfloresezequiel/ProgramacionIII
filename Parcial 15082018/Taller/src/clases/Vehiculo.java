@@ -21,8 +21,8 @@ public class Vehiculo {
 
 	public static Vehiculo instancia(int id, String marcaModelo, String patente, int anio) {
 		Vehiculo vehiculoNuevo = new Vehiculo( id, marcaModelo, patente,anio);
-		if(vehiculoNuevo.equals(null)) {
-			System.out.println("entre");
+		if(patente == null) {
+			
 			return null;
 			
 		}

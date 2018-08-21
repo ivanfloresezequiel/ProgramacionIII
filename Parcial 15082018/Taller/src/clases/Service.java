@@ -27,13 +27,14 @@ public class Service {
 	public static Service instancia(int i, Vehiculo elVehiculo, Cliente elCliente, LocalDate fechaDeService, String detalle,
 			float precioFinal) {
 		Service serviceNuevo = new Service(i, elVehiculo, elCliente, fechaDeService, detalle, precioFinal);
-		
-		if(serviceNuevo.vehiculo1.equals(null)) {
+	
+		if(elVehiculo == null) {
 			return null;
 		}
-		
-		return serviceNuevo;
-	}
+		else {
+			return serviceNuevo;
+		}
+		}
 
 
 	public String mostrarResumen() {

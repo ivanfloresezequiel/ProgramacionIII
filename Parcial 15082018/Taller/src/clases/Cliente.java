@@ -28,11 +28,19 @@ public class Cliente {
 	
 	}
 	
+	public String getDocumento() {
+		return documento;
+	}
+
+	public void setDocumento(String documento) {
+		this.documento = documento;
+	}
+
 	public static Cliente instancia (int idCliente, String apellido, String nombres, String documento, LocalDate fechaDeNacimiento,
 			String direccion, String telefono) {
 		Cliente clienteNuevo = new Cliente (idCliente, apellido, nombres, documento, fechaDeNacimiento, direccion, telefono);
 		
-		if(clienteNuevo.documento.equals(null)) {
+		if(documento == null) {
 			return null;
 		}
 		
