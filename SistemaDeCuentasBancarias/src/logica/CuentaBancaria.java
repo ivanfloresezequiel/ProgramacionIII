@@ -19,6 +19,7 @@ public class CuentaBancaria {
 	public void depositar(double montoDinero) {
 		if (montoDinero > 0){
 			saldo += montoDinero;
+			
 			Movimiento movimientoDeposito = new Movimiento("DEPOSITO", montoDinero);
 			movimientosCuenta.add(movimientoDeposito);
 		}

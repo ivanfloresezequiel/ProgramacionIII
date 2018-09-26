@@ -1,5 +1,5 @@
 package testJUnmit;
-
+// CREACION DE CLIENTE Y CREACION DE CAJA DE AHORRO
 //import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -14,20 +14,24 @@ import logica.TipoCuentas;
 class TestCuentaBancariaNuevo {
 
 	
+	
+	
+	
 	@Test
 	public void testCuentaBancariaPermDescubierto() {
 		TipoCuentas cuentaB = new TipoCuentas("b");
 		cuentaB.depositar(50);
-		cuentaB.extraer(150);
-		assertEquals(100.00,cuentaB.getDescubierto());
+		cuentaB.extraer(1060);
+		assertEquals(0.00,cuentaB.getDescubierto(),2);
 		
 	}
 	@Test
 	public void testCuentaBancariaEspecialUnaSolaExtraccionAlMes() {
 		TipoCuentas cuentaA = new TipoCuentas("a");
 		cuentaA.depositar(50);
-		cuentaA.depositar(150);
-		assertEquals(50,cuentaA.getSaldo());
+		cuentaA.extraer(25);
+		cuentaA.extraer(25);
+		assertEquals(25,cuentaA.getSaldo());
 		
 		
 	}
@@ -78,8 +82,8 @@ class TestCuentaBancariaNuevo {
 		LocalDateTime dateDesde = LocalDateTime.now();
 		LocalDateTime dateHasta = LocalDateTime.now();
 
-		String valorComparar ="DEPOSITO 500.0 30 MAY 2018\n" + 
-				"ESTRACCI 200.0 30 MAY 2018\n";
+		String valorComparar ="DEPOSITO 500.0 26 SEPTEMBER 2018\n" + 
+				"ESTRACCI 200.0 26 SEPTEMBER 2018\n";
 		assertEquals(valorComparar,cuentaBancaria1.consultarMovimientos(dateDesde, dateHasta));
 	}
 	public void testCuentaBancariasConsultarLosMovimientosDesdeHasta(){

@@ -11,18 +11,23 @@ public class TipoCuentas extends CuentaBancaria {
 		tipoCuenta = a;
 	}
 	public void extraer(double montoDinero) {
+		double aux;
 		LocalDate fechaActual = LocalDate.now();
 		if(tipoCuenta == "a") {
 			if(ultimoDeposito.getMonthValue() != fechaActual.getMonthValue() || ultimoDeposito.getYear() != fechaActual.getYear()) {
+				ultimoDeposito = fechaActual;
+				System.out.println(ultimoDeposito);
+				
 				super.extraer(montoDinero);
 			}
 		}
 		if(tipoCuenta == "b") {
-			if(this.saldo < montoDinero && this.descubierto >-1000) {
-				if(descubierto >= montoDinero - this.saldo) {
-					montoDinero-=this.saldo;
+			if(this.saldo < montoDinero && this.descubierto > -1000) {
+				aux= descubierto + (this.saldo - montoDinero); 
+				if(aux >= -1000) {
+					
 					this.saldo=0.0;
-					descubierto-= montoDinero;
+					descubierto= aux;
 				}
 			}
 		}
